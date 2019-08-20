@@ -64,7 +64,7 @@ def logarithmic(number, beta):
 
 def question_2():
     arq = open('infos.txt', 'r')
-    header = arq.readline()
+    arq.readline()
     lines = arq.readlines()
     cont = 0
     for line in lines:
