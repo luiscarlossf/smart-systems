@@ -1,6 +1,7 @@
 import math
 import numpy as np
 import matplotlib.pyplot as plt 
+
 class Neuron():
     """
     Represents a artificial neuron.
@@ -89,7 +90,7 @@ def question_2():
             results.append(neuronio.get_output(beta))
         fig, ax = plt.subplots()
         ax.plot(samples, results)
-        plt.savefig("plot-{0}.png".format(cont))
+        plt.savefig("./plots/plot-{0}.png".format(cont))
 
 if __name__=='__main__':
     inputs = [1, 1]
