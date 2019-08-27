@@ -68,8 +68,10 @@ def question_2():
     arq.readline()
     lines = arq.readlines()
     cont = 0
+    letras = list("abcdefghijklmnopqrstuvwxyz")
     for line in lines:
         cont += 1
+        letra = letras.pop(0)
         line = line.split(';')
         n_inputs = int(line[0])
         start = int(line[1].split(',')[0])
@@ -90,6 +92,10 @@ def question_2():
             results.append(neuronio.get_output(beta))
         fig, ax = plt.subplots()
         ax.plot(samples, results)
+        plt.xlabel('Sinais de entrada')
+        plt.ylabel('Saída do neurônio')
+        plt.title("Letra {0}) - Valores de saída de um neorônio artificial".format(letra))
+        
         plt.savefig("./plots/plot-{0}.png".format(cont))
 
 if __name__=='__main__':
