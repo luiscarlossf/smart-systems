@@ -12,13 +12,15 @@ class Neuron:
         
         _inputs = [-1]
         _inputs.extend(inputs)
-        
         _inputs = np.array(_inputs)
         if np.size(_inputs) != np.size(self.weights):
             raise ValueError("Quantidade de entradas menor do que a de pesos")
         u = (_inputs * self.weights).sum()
         y = self.activation(u, self.beta)
         return y
+    
+    def get_weights(self):
+        return self.weights
 
 def degree_bipolar(number, beta=None):
     if number >= 0:
@@ -63,6 +65,12 @@ class HiddenLayer:
     
     def set_beta(self, beta, neuron_index):
         self.neurons[neuron_index - 1].beta = beta
+    
+    def get_weights(self, neuron_index=None):
+        if neuron_index == None:
+            return [neuron.get_weights() for neuron in self.neurons]
+        else:
+            return self.neurons[neuron_index].get_weights()
 
     def get_output(self, inputs):
         return [neuron.get_output(inputs) for neuron in self.neurons]
@@ -87,6 +95,12 @@ class OutputLayer:
     
     def set_beta(self, beta, neuron_index):
         self.neurons[neuron_index - 1].beta = beta
+    
+    def get_weights(self, neuron_index=None):
+        if neuron_index == None:
+            return [neuron.get_weights() for neuron in self.neurons]
+        else:
+            return self.neurons[neuron_index].get_weights()
     
     def get_output(self, inputs):
         return [i.get_output(inputs) for i in self.neurons]
