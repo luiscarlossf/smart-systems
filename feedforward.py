@@ -30,7 +30,12 @@ class Feedforward:
     def set_weigths(self, weights, layer_index, neuron_index):
         self.hidden_layers[layer_index - 1].set_weights(weights, neuron_index)
     
+    def get_weights(self):
+        hidden_weights = [layer.get_weights() for layer in self.hidden_layers]
+        hidden_weights.extend(self.output_layer.get_weights())
+    
     def get_outputs(self, inputs, beta=1):
+        output_layer = inputs
         if self.hidden_sizes != None:
             output_layer = self.hidden_layers[0].get_output(inputs)
             for hidden in self.hidden_layers[1:]:
