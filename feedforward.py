@@ -1,6 +1,7 @@
 import rna
 from xlrd import open_workbook
 
+'''
 class Feedforward:
     def __init__(self, inputs_size, outputs_size, activation=None, beta=1):
         self.inputs_size = inputs_size
@@ -9,8 +10,9 @@ class Feedforward:
     
     def get_outputs(self, inputs, beta=1):
         return self.output_layer.get_output(inputs)
+'''
 
-class MultiFeedforward:
+class Feedforward:
     def __init__(self, inputs_size, outputs_size, hidden_sizes=None, activation=None,  beta=1):
         self.inputs_size = inputs_size
         self.outputs_size = outputs_size
@@ -38,7 +40,7 @@ class MultiFeedforward:
 
 if __name__ == "__main__":
 
-    network = MultiFeedforward(inputs_size=1, hidden_sizes=[3], outputs_size=1)
+    network = Feedforward(inputs_size=1, hidden_sizes=[3], outputs_size=1)
 
     network.set_weigths(weights=[3.38888, 0.962803], layer_index=1, neuron_index=1)
     network.set_weigths(weights=[11.0847, 1.88752], layer_index=1, neuron_index=2)
